@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loader from '../loader/Loader.jsx';
 
+
 export default function Index() {
     const [users, setUsers] = useState([]);
     let [loader, setLoader] = useState(false);
@@ -21,7 +22,7 @@ export default function Index() {
             setLoader(false);
             getUsers();
         }
-        else{
+        else {
             setLoader(false);
         }
     }
@@ -29,7 +30,7 @@ export default function Index() {
         setLoader(true);
         getUsers();
     }, [])
-    
+
 
     if (loader) {
         return (
@@ -46,59 +47,14 @@ export default function Index() {
                         </a>
                         <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li className="nav-item">
-                                <a href="#" className="nav-link align-middle px-0">
-                                    <i className="fs-4 bi-house" /> <span className="ms-1 d-none d-sm-inline">Home</span>
-                                </a>
+                                <Link to={'/user/index'} className="nav-link align-middle px-0">
+                                    <i className="fs-4 bi-house" /> <span className="ms-1 d-none d-sm-inline">Index</span>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#submenu1" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-speedometer2" /> <span className="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                                <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                    <li className="w-100">
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 1 </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 2 </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-table" /> <span className="ms-1 d-none d-sm-inline">Orders</span></a>
-                            </li>
-                            <li>
-                                <a href="#submenu2" data-bs-toggle="collapse" className="nav-link px-0 align-middle ">
-                                    <i className="fs-4 bi-bootstrap" /> <span className="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                                <ul className="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                    <li className="w-100">
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Item</span> 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#submenu3" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-grid" /> <span className="ms-1 d-none d-sm-inline">Products</span> </a>
-                                <ul className="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                    <li className="w-100">
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Product</span> 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Product</span> 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Product</span> 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" className="nav-link px-0"> <span className="d-none d-sm-inline">Product</span> 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" className="nav-link px-0 align-middle">
-                                    <i className="fs-4 bi-people" /> <span className="ms-1 d-none d-sm-inline">Customers</span> </a>
+                            <Link href="#" to={'/user/create'} className="nav-link px-0 align-middle">
+                                    <i className="fs-4 bi-table" /> <span className="ms-1 d-none d-sm-inline">Create</span> 
+                                    </Link>
                             </li>
                         </ul>
                         <hr />
@@ -140,8 +96,8 @@ export default function Index() {
                                         <td>{user.email}</td>
                                         <td>{user.password}</td>
                                         <td className='btn btn-danger me-auto ' onClick={() => deleteUser(user._id)}>Delete</td>
-                                        <td className='btn btn-info mx-3 my-1'><Link  className='text-decoration-none text-dark' to={`/user/${user._id}`}>Details</Link></td>
-                                        <td className='btn btn-warning'><Link  className='text-decoration-none text-dark' to={`/user/edit/${user._id}`}>Edit</Link></td>
+                                        <td className='btn btn-info mx-3 my-1'><Link className='text-decoration-none text-dark' to={`/user/${user._id}`}>Details</Link></td>
+                                        <td className='btn btn-warning'><Link className='text-decoration-none text-dark' to={`/user/edit/${user._id}`}>Edit</Link></td>
 
                                     </tr>
                                 </React.Fragment>
